@@ -44,6 +44,7 @@ export class PeliculaAltaComponent implements OnInit {
   public getActores() {
     this.actoresSv.getItems().subscribe(res => {
       this.actores = res;
+      console.log(res);
     });
   }
 

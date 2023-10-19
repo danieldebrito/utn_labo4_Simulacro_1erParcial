@@ -19,7 +19,7 @@ export class ActoresService {
 
   public getItems(): Observable<Actor[]> {
     const col = collection(this.firestore, 'actores');
-    const queryObservable = query(col, orderBy('fecha')); // ordenar por fecha
+    const queryObservable = query(col, orderBy('apellido')); // ordenar por fecha
     const observable = collectionData(queryObservable).pipe(
       map(res => {
         return res as Actor[];
