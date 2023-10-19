@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <table class="table table-bordered table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Bandera</th>
+                <th scope="col">Detalle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pais of paises  | paginate: { itemsPerPage: 6, currentPage: p }">
+                <td> {{ pais.name.common }} </td>
+                <td> <img [src]="pais.flags.png" alt="Flag of {{ pais.name.common }}"></td>
+                <td> <button type="button" class="btn btn-success" (click)="enviarPais(pais)"><i
+                            class="fa fa-eye"></i></button> </td>
+            </tr>
+        </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event" previousLabel="Previo" nextLabel="Siguiente"></pagination-controls>
+</div>

@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'error404', loadChildren: () => import('./pages/error404/error404.module').then(m => m.Error404Module) },
   { path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule) },
   { path: 'denegado', loadChildren: () => import('./pages/denegado/denegado.module').then(m => m.DenegadoModule) },
+  { path: 'actoralta', loadChildren: () => import('./pages/actores/actor-alta/actor-alta.module').then(m => m.ActorAltaModule) },
 ];
 
 @NgModule({

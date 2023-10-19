@@ -1,0 +1,116 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 class="mb-3">Nuevo Actor</h4>
+            <form [formGroup]="altaForm" (ngSubmit)="cargarActor()">
+
+                <div class="row">
+                    <div class="col-sm-3">
+                        <img src="/assets/actores/ted.jpg" alt="" srcset="">
+                    </div>
+                    <div class="col-sm-9">
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre"
+                                    formControlName="nombre">
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.nombre.errors?.['required'] && altaForm.controls.nombre.touched">
+                                    El nombre es requerido.
+                                </small>
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.nombre.errors?.['minlength'] && altaForm.controls.nombre.touched">
+                                    El nombre debe tener al menos dos caracteres.
+                                </small>
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.nombre.errors?.['maxlength'] && altaForm.controls.nombre.touched">
+                                    El nombre puede tener cuarenta caracteres maxino.
+                                </small>
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.nombre.errors?.['containsSpaces'] && altaForm.controls.nombre.touched">
+                                    El nombre no puede contener espacios.
+                                </small>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="apellido" class="form-label">Apellido</label>
+                                <input type="text" class="form-control" id="apellido" placeholder="Ingrese apellido"
+                                    formControlName="apellido">
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.apellido.errors?.['required'] && altaForm.controls.apellido.touched">
+                                    El apellido es requerido
+                                </small>
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.apellido.errors?.['maxlength'] && altaForm.controls.apellido.touched">
+                                    El apellido puede tener cuarenta caracteres maxino.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-2">
+                                <label for="sexo" class="form-label">Sexo</label>
+                                <select class="form-control" id="sexo" formControlName="sexo">
+                                    <option value="">Seleccione uno</option>
+                                    <option value="F">Femenino</option>
+                                    <option value="M">Masculino</option>
+                                </select>
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.sexo.errors?.['required'] && altaForm.controls.sexo.touched">
+                                    El sexo es requerido
+                                </small>
+                            </div>
+
+                            <div class="col-md-5">
+                                <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                                <input type="text" class="form-control" id="fechaNacimiento"
+                                    placeholder="Ingrese fecha nacimiento" formControlName="fechaNacimiento">
+                                <small class="invalid"
+                                    *ngIf="altaForm.controls.fechaNacimiento.errors?.['required'] && altaForm.controls.fechaNacimiento.touched">
+                                    La fecha de nacimiento es requerida
+                                </small>
+                            </div>
+
+
+                            <div class="mt-3" *ngIf="paisCargado">
+                                <label for="sexo" class="form-label">Pais de Origen</label>
+
+                                <app-pais-item [pais]="pais"></app-pais-item>
+                            </div>
+                            <small class="invalid" *ngIf="errorPais">
+                                El pais es requerido
+                            </small>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="my-4">
+
+                <div class="row">
+                    <div class="col-md-12 mb-5">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="terminos" formControlName="terminos">
+                            <label class="form-check-label" for="terminos">
+                                Aceptar términos y condiciones
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-block"
+                            [disabled]="altaForm.invalid || !altaForm.controls.terminos.value">
+                            Crear Actor
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="col-sm-4 mt-5">
+            <app-paises-tabla (pasaPais)="asignaPais($event)"></app-paises-tabla>
+        </div>
+
+    </div>
+</div>
