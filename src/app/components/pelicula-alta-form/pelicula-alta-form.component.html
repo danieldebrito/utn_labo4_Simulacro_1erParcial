@@ -1,0 +1,87 @@
+<form [formGroup]="altaForm" (ngSubmit)="cargarPelicula()">
+
+    <div class="row">
+      <h2>Nueva Pelicula</h2>
+      <div class="col-sm-3">
+        <img src="/assets/peliculas/killbill.jpg" alt="" srcset="">
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+  
+          <div class="col-sm-6">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Ingrese nombre" formControlName="nombre">
+            <small class="invalid"
+              *ngIf="altaForm.controls.nombre.errors?.['required'] && altaForm.controls.nombre.touched">
+              El nombre es requerido.
+            </small>
+            <small class="invalid"
+              *ngIf="altaForm.controls.nombre.errors?.['minlength'] && altaForm.controls.nombre.touched">
+              El nombre debe tener al menos dos caracteres.
+            </small>
+            <small class="invalid"
+              *ngIf="altaForm.controls.nombre.errors?.['maxlength'] && altaForm.controls.nombre.touched">
+              El nombre puede tener cuarenta caracteres maxino.
+            </small>
+          </div>
+  
+          <div class="col-sm-6">
+            <label for="fechaEstreno" class="form-label">Fecha de Estreno</label>
+            <input type="text" class="form-control" id="fechaEstreno" placeholder="Ingrese fecha de estreno"
+              formControlName="fechaEstreno">
+            <small class="invalid"
+              *ngIf="altaForm.controls.fechaEstreno.errors?.['required'] && altaForm.controls.fechaEstreno.touched">
+              La fecha de estreno es requerido
+            </small>
+          </div>
+        </div>
+  
+        <div class="row">
+  
+          <div class="col-md-2">
+  
+            <label for="tipo" class="form-label">Tipo</label>
+            <select class="form-control" id="tipo" formControlName="tipo">
+              <option value="">Seleccione uno</option>
+              <option value="Terror">Terror</option>
+              <option value="Comedia">Comedia</option>
+              <option value="Amor">Amor</option>
+              <option value="Triller">Triller</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <small class="invalid" *ngIf="altaForm.controls.tipo.errors?.['required'] && altaForm.controls.tipo.touched">
+              El tipo es requerido
+            </small>
+  
+          </div>
+  
+          <div class="col-md-5">
+  
+            <label for="cantPublico" class="form-label">cant. Publico</label>
+            <input type="text" class="form-control" id="cantPublico" placeholder="Ingrese Cant. Publico"
+              formControlName="cantPublico">
+            <small class="invalid"
+              *ngIf="altaForm.controls.cantPublico.errors?.['required'] && altaForm.controls.cantPublico.touched">
+              La cantidad de publico es requerida
+            </small>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  
+    <hr class="my-4">
+  
+    <h2>Actores</h2>
+    <app-actor-listado [data]="actoresPush"></app-actor-listado>
+  
+  
+    <div class="row">
+      <div class="col-md-12 d-grid gap-2">
+        <button type="submit" class="btn btn-primary btn-block" [disabled]="altaForm.invalid">
+          Crear Pelicula
+        </button>
+      </div>
+    </div>
+  </form>
+  

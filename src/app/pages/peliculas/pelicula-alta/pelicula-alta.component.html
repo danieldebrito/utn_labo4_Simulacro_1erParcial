@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <app-pelicula-alta-form [actoresPush]="actoresPush" (pasaPelicula)="cargaPelicula($event)"></app-pelicula-alta-form>
+      </div>
+      <div class="col-sm-6">
+        <app-actor-listado (lanzaItem)="addActor($event)" [data]="actores"></app-actor-listado>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-lg-6">
+        <div>
+          <input (change)="subirArchivo($event)" class="form-control form-control-lg" id="formFileLg" type="file">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <img [src]="url" class="card-img-top" alt="...">

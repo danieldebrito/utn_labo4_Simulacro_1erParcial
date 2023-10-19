@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import('./pages/about/about.module').then(m => m.AboutModule) },
   { path: 'denegado', loadChildren: () => import('./pages/denegado/denegado.module').then(m => m.DenegadoModule) },
   { path: 'actoralta', loadChildren: () => import('./pages/actores/actor-alta/actor-alta.module').then(m => m.ActorAltaModule) },
+  { path: 'peliculaalta', loadChildren: () => import('./pages/peliculas/pelicula-alta/pelicula-alta.module').then(m => m.PeliculaAltaModule) },
 ];
 
 @NgModule({
